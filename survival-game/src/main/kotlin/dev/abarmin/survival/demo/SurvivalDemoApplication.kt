@@ -7,5 +7,7 @@ import org.springframework.boot.runApplication
 class SurvivalDemoApplication
 
 fun main(args: Array<String>) {
+	System.setProperty("java.awt.headless", "false")
+
 	runApplication<SurvivalDemoApplication>(*args)
 }
