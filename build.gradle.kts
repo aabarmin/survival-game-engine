@@ -37,6 +37,12 @@ subprojects {
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "kotlin")
 
+    configurations {
+        compileOnly {
+            extendsFrom(configurations.annotationProcessor.get())
+        }
+    }
+
     dependencies {
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")

@@ -2,6 +2,7 @@ package dev.abarmin.survival.demo.scene.intro
 
 import dev.abarmin.survival.demo.controller.SceneController
 import dev.abarmin.survival.demo.scene.base.Scene
+import dev.abarmin.survival.demo.scene.provider.SceneContentLoader
 import org.springframework.stereotype.Component
 
 /**
@@ -11,16 +12,13 @@ import org.springframework.stereotype.Component
  */
 @Component
 class IntroScene(
-    private val introController: IntroSceneController
+    private val introController: IntroSceneController,
+    private val sceneLoader: SceneContentLoader
 ) : Scene {
+    private val content: Array<IntArray> = sceneLoader.loadContent("introScene")
     init {
         introController.introScene = this
     }
-
-    /**
-     * Initializing with default values.
-     */
-    private val content: Array<IntArray> = Array(128) { row -> IntArray(96) }
 
     override fun putValue(x: Int, y: Int, value: Int) {
         content[x][y] = value
