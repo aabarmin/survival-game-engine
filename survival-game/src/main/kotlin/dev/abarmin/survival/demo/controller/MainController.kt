@@ -2,7 +2,7 @@ package dev.abarmin.survival.demo.controller
 
 import dev.abarmin.survival.demo.canvas.MainCanvas
 import dev.abarmin.survival.demo.scene.base.Scene
-import dev.abarmin.survival.demo.view.point.ViewPoint
+import dev.abarmin.survival.demo.viewpoint.ViewPoint
 import java.awt.event.*
 
 /**

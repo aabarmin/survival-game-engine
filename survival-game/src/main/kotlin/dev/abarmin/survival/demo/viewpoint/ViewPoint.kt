@@ -1,4 +1,4 @@
-package dev.abarmin.survival.demo.view.point
+package dev.abarmin.survival.demo.viewpoint
 
 /**
  * A view point, piece of the whole scene which is visible for the player. At this moment,

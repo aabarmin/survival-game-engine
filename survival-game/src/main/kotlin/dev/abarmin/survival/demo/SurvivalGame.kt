@@ -4,7 +4,7 @@ import dev.abarmin.survival.demo.canvas.MainCanvas
 import dev.abarmin.survival.demo.controller.MainController
 import dev.abarmin.survival.demo.scene.base.SceneColorProvider
 import dev.abarmin.survival.demo.scene.main.MainGameScene
-import dev.abarmin.survival.demo.view.point.ViewPoint
+import dev.abarmin.survival.demo.viewpoint.ViewPoint
 import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
 import org.springframework.stereotype.Component

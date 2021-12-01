@@ -1,6 +1,6 @@
 package dev.abarmin.survival.demo.scene.base
 
-import dev.abarmin.survival.demo.view.point.ViewPoint
+import dev.abarmin.survival.demo.viewpoint.ViewPoint
 import org.springframework.stereotype.Component
 
 /**
