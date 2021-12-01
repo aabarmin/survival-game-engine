@@ -7,6 +7,7 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":survival-model"))
     implementation("org.springframework.boot:spring-boot-starter")
 }
 
