@@ -8,11 +8,5 @@ import org.springframework.stereotype.Component
  */
 @Component
 class IntroSceneController : SceneController {
-    override fun mousePress(x: Int, y: Int) {
 
-    }
-
-    override fun keyPressed(key: Char) {
-
-    }
 }

@@ -9,10 +9,14 @@ interface SceneController {
     /**
      * Mouse is pressed the pixel with the given coordinates.
      */
-    fun mousePress(x: Int, y: Int)
+    fun mousePress(x: Int, y: Int) {
+        // do nothing
+    }
 
     /**
      * Handle the keypress event.
      */
-    fun keyPressed(key: Char)
+    fun keyPressed(key: Char) {
+        // do nothing
+    }
 }
