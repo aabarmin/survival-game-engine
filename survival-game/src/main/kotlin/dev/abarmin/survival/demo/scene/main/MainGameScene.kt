@@ -3,6 +3,7 @@ package dev.abarmin.survival.demo.scene.main
 import dev.abarmin.survival.demo.controller.MainController
 import dev.abarmin.survival.demo.controller.SceneController
 import dev.abarmin.survival.demo.scene.PixelColor
+import dev.abarmin.survival.demo.scene.PixelPosition
 import dev.abarmin.survival.demo.scene.Scene
 import dev.abarmin.survival.demo.scene.SceneUpdateContext
 import dev.abarmin.survival.demo.scene.provider.SceneProvider
@@ -67,7 +68,7 @@ class MainGameScene(
         this.mainController = controller
     }
 
-    override fun getColor(x: Int, y: Int): PixelColor {
-        return currentScene.getColor(x, y)
+    override fun getColor(position: PixelPosition): PixelColor {
+        return currentScene.getColor(position)
     }
 }

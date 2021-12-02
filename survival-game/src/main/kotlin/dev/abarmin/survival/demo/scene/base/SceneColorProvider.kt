@@ -1,6 +1,7 @@
 package dev.abarmin.survival.demo.scene.base
 
 import dev.abarmin.survival.demo.scene.PixelColor
+import dev.abarmin.survival.demo.scene.PixelPosition
 import dev.abarmin.survival.demo.scene.Scene
 import dev.abarmin.survival.demo.viewpoint.ViewPoint
 import org.springframework.stereotype.Component
@@ -17,13 +18,8 @@ import org.springframework.stereotype.Component
  */
 @Component
 class SceneColorProvider {
-    fun getColor(scene: Scene, viewPoint: ViewPoint, x: Int, y: Int): PixelColor {
-        val targetRow = x + viewPoint.x
-        val targetCell = y + viewPoint.y
-
-        // TODO: add checks if we are going out of bounds
-        // TODO: replace X and Y with PixelPosition
-
-        return scene.getColor(targetCell, targetRow)
+    fun getColor(scene: Scene, viewPoint: ViewPoint, request: PixelPosition): PixelColor {
+        val target = request.plusGiven(viewPoint.position)
+        return scene.getColor(target)
     }
 }

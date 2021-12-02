@@ -8,7 +8,7 @@ import dev.abarmin.survival.demo.sprite.Sprite
  * @author Aleksandr Barmin
  */
 class DynamicSceneLayer(private val sprites: List<Sprite>) : SceneLayer {
-    override fun getColor(x: Int, y: Int): PixelColor {
+    override fun getColor(position: PixelPosition): PixelColor {
         /**
          * Should return totally transparent color if nothing to return.
          * First, it's necessary to find the first sprite which is in the given position.
@@ -16,9 +16,8 @@ class DynamicSceneLayer(private val sprites: List<Sprite>) : SceneLayer {
          * I need to make the solution working, nothing more.
          */
         for (sprite in sprites) {
-            val request = PixelPosition(x, y)
-            if (belongs(sprite, request)) {
-                return sprite.getColor(request.minuxGiven(sprite.getTopLeft()))
+            if (belongs(sprite, position)) {
+                return sprite.getColor(position.minuxGiven(sprite.getTopLeft()))
             }
         }
         return PixelColor.TRANSPARENT

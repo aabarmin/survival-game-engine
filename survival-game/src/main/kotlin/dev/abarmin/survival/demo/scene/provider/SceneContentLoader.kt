@@ -38,14 +38,14 @@ class SceneContentLoader(
              * TODO: fix the deserialization.
              */
             val result: Array<Array<PixelColor>> =
-                Array(128) { _ -> Array(96) { _ -> PixelColor.TRANSPARENT} }
+                Array(96) { _ -> Array(128) { _ -> PixelColor.TRANSPARENT} }
             val whiteColor = PixelColor.TRANSPARENT
             val blackColor = PixelColor(0, 0, 0, 0)
             for (item in data) {
                 if (item.cellValue == 0) {
-                    result[item.cellNumber][item.rowNumber] = whiteColor
+                    result[item.rowNumber][item.cellNumber] = whiteColor
                 } else {
-                    result[item.cellNumber][item.rowNumber] = blackColor
+                    result[item.rowNumber][item.cellNumber] = blackColor
                 }
             }
             return result

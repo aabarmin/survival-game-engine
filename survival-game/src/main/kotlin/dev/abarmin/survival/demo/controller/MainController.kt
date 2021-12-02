@@ -33,8 +33,8 @@ class MainController(
     var mouseHold: Boolean = false
 
     private fun paint(e: MouseEvent) {
-        val x = (e.x / 8) + viewPoint.x
-        val y = (e.y / 8) + viewPoint.y
+        val x = (e.x / 8) + viewPoint.position.x
+        val y = (e.y / 8) + viewPoint.position.y
         controllerDelegate.mousePress(x, y)
     }
 

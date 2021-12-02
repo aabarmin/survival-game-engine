@@ -1,6 +1,7 @@
 package dev.abarmin.survival.demo.canvas
 
 import dev.abarmin.survival.demo.scene.PixelColor
+import dev.abarmin.survival.demo.scene.PixelPosition
 import dev.abarmin.survival.demo.scene.base.SceneColorProvider
 import dev.abarmin.survival.demo.scene.Scene
 import dev.abarmin.survival.demo.viewpoint.ViewPoint
@@ -34,9 +35,10 @@ class MainCanvas(
     }
 
     private fun draw(graphics: Graphics, conditionalDrawing: Boolean = true) {
-        for (rowNum in 0 until viewPoint.width) {
-            for (colNum in 0 until viewPoint.height) {
-                val pixelColor = colorProvider.getColor(scene, viewPoint, rowNum, colNum)
+        for (rowNum in 0 until viewPoint.height) {
+            for (colNum in 0 until viewPoint.width) {
+                val request = PixelPosition(colNum, rowNum)
+                val pixelColor = colorProvider.getColor(scene, viewPoint, request)
                 if (!conditionalDrawing) {
                     drawPixel(rowNum, colNum, pixelColor, graphics)
                 } else if (shouldDraw(rowNum, colNum, pixelColor)) {
@@ -49,11 +51,11 @@ class MainCanvas(
     private fun drawPixel(
         rowNumber: Int, columnNumber: Int, color: PixelColor, graphics: Graphics) {
         // save the state
-        currentState[columnNumber][rowNumber] = color
+        currentState[rowNumber][columnNumber] = color
 
         // TODO, this is the scale value, extract it somewhere
-        val x = rowNumber * 8
-        val y = columnNumber * 8
+        val x = columnNumber * 8
+        val y = rowNumber * 8
 
         // TODO: fix colors here
         graphics.color = Color.BLACK
@@ -63,7 +65,7 @@ class MainCanvas(
     }
 
     private fun shouldDraw(rowNumber: Int, columnNumber: Int, color: PixelColor): Boolean {
-        val currentColor = currentState[columnNumber][rowNumber]
+        val currentColor = currentState[rowNumber][columnNumber]
         return currentColor != color
     }
 }

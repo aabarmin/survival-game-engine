@@ -11,7 +11,7 @@ interface Scene {
     /**
      * Get color of a particular pixel of the scene.
      */
-    fun getColor(x: Int, y: Int): PixelColor
+    fun getColor(position: PixelPosition): PixelColor
 
     /**
      * Update the scene - some internals live.

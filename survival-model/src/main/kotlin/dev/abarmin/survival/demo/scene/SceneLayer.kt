@@ -9,7 +9,7 @@ interface SceneLayer {
     /**
      * Get color of the particular pixel of the layer.
      */
-    fun getColor(x: Int, y: Int): PixelColor
+    fun getColor(position: PixelPosition): PixelColor
 
     /**
      * Update the state if necessary.

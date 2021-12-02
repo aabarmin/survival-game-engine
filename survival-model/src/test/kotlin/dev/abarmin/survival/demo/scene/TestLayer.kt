@@ -9,7 +9,7 @@ class TestLayer(private val defaultColor: PixelColor) : SceneLayer {
     /**
      * Always returns white color.
      */
-    override fun getColor(x: Int, y: Int): PixelColor {
+    override fun getColor(position: PixelPosition): PixelColor {
         return defaultColor
     }
 }

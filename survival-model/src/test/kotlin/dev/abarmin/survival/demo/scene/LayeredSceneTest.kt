@@ -25,14 +25,14 @@ internal class LayeredSceneTest {
 
     @Test
     internal fun `Check if the color is returned`() {
-        val returnedColor = uut.getColor(0, 0)
+        val returnedColor = uut.getColor(PixelPosition(0, 0))
         assertNotNull(returnedColor)
     }
 
     @Test
     internal fun `Check if the color of the latest layer is returned`() {
-        val returnedColor = uut.getColor(0, 0)
+        val returnedColor = uut.getColor(PixelPosition(0, 0))
         assertNotNull(returnedColor)
-        assertEquals(128, returnedColor.red)
+        assertEquals(255, returnedColor.red)
     }
 }
