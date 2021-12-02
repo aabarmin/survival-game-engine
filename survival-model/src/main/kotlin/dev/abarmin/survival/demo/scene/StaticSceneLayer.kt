@@ -10,6 +10,6 @@ class StaticSceneLayer(
 ) : SceneLayer {
 
     override fun getColor(x: Int, y: Int): PixelColor {
-        return data[x][y]
+        return data[y][x]
     }
 }

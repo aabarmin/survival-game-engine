@@ -36,14 +36,6 @@ class MainGameScene(
         mainController.setControllerDelegate(currentController)
     }
 
-    override fun putValue(x: Int, y: Int, value: Int) {
-        currentScene.putValue(x, y, value)
-    }
-
-    override fun getContent(): Array<IntArray> {
-        return currentScene.getContent()
-    }
-
     override fun update(context: SceneUpdateContext) {
         currentScene.update(context)
     }
@@ -76,6 +68,6 @@ class MainGameScene(
     }
 
     override fun getColor(x: Int, y: Int): PixelColor {
-        TODO("Not yet implemented")
+        return currentScene.getColor(x, y)
     }
 }

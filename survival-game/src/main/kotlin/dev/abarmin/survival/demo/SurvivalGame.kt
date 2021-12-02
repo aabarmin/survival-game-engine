@@ -1,6 +1,7 @@
 package dev.abarmin.survival.demo
 
 import dev.abarmin.survival.demo.canvas.MainCanvas
+import dev.abarmin.survival.demo.canvas.PixelColorConverter
 import dev.abarmin.survival.demo.controller.MainController
 import dev.abarmin.survival.demo.scene.SceneUpdateContext
 import dev.abarmin.survival.demo.scene.base.SceneColorProvider
@@ -22,7 +23,8 @@ import javax.swing.WindowConstants
 @Component
 class SurvivalGame(
     private val gameScene: MainGameScene,
-    private val colorProvider: SceneColorProvider
+    private val colorProvider: SceneColorProvider,
+    private val colorConverter: PixelColorConverter
 ) : ApplicationRunner {
     override fun run(args: ApplicationArguments?) {
         val jFrame = JFrame("Starting point")
@@ -41,7 +43,8 @@ class SurvivalGame(
         val mainCanvas = MainCanvas(
             gameScene,
             viewPoint,
-            colorProvider
+            colorProvider,
+            colorConverter
         )
         val controller = MainController(mainCanvas, viewPoint)
         gameScene.setMainController(controller)

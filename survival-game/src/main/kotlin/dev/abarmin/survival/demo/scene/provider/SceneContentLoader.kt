@@ -3,6 +3,7 @@ package dev.abarmin.survival.demo.scene.provider
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import dev.abarmin.survival.demo.config.ApplicationConfiguration
+import dev.abarmin.survival.demo.scene.PixelColor
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.nio.file.Files
@@ -23,7 +24,7 @@ class SceneContentLoader(
         val logger = LoggerFactory.getLogger(SceneContentLoader::class.java)
     }
 
-    fun loadContent(fileName: String): Array<IntArray> {
+    fun loadContent(fileName: String): Array<Array<PixelColor>> {
         logger.info("Loading scene from file {}", fileName)
 
         val filepath = Path.of(config.sceneStorage).resolve("$fileName.json")
@@ -36,9 +37,16 @@ class SceneContentLoader(
              *
              * TODO: fix the deserialization.
              */
-            val result = Array(128) { _ -> IntArray(96) }
+            val result: Array<Array<PixelColor>> =
+                Array(128) { _ -> Array(96) { _ -> PixelColor.TRANSPARENT} }
+            val whiteColor = PixelColor(255, 255, 255, 0)
+            val blackColor = PixelColor(0, 0, 0, 0)
             for (item in data) {
-                result[item.cellNumber][item.rowNumber] = item.cellValue
+                if (item.cellValue == 0) {
+                    result[item.cellNumber][item.rowNumber] = whiteColor
+                } else {
+                    result[item.cellNumber][item.rowNumber] = blackColor
+                }
             }
             return result
         }

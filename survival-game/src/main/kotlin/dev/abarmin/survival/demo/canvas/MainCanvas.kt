@@ -1,5 +1,6 @@
 package dev.abarmin.survival.demo.canvas
 
+import dev.abarmin.survival.demo.scene.PixelColor
 import dev.abarmin.survival.demo.scene.base.SceneColorProvider
 import dev.abarmin.survival.demo.scene.Scene
 import dev.abarmin.survival.demo.viewpoint.ViewPoint
@@ -16,11 +17,13 @@ import java.awt.Graphics
 class MainCanvas(
     private val scene: Scene,
     private val viewPoint: ViewPoint,
-    private val colorProvider: SceneColorProvider
+    private val colorProvider: SceneColorProvider,
+    private val colorConverter: PixelColorConverter
 ) : Canvas() {
     // this is the current state of the canvas - what is actually displayed
     // required not to draw everything every time
-    private val currentState = Array(viewPoint.width) { _ -> IntArray(viewPoint.height) { _ -> -1 } }
+    private val currentState: Array<Array<PixelColor>> =
+        Array(viewPoint.height) { _ -> Array(viewPoint.width) { _ -> PixelColor.TRANSPARENT} }
 
     override fun paint(g: Graphics) {
         draw(g, false)
@@ -43,26 +46,24 @@ class MainCanvas(
         }
     }
 
-    private fun drawPixel(rowNumber: Int, columnNumber: Int, color: Int, graphics: Graphics): Unit {
+    private fun drawPixel(
+        rowNumber: Int, columnNumber: Int, color: PixelColor, graphics: Graphics) {
         // save the state
-        currentState[rowNumber][columnNumber] = color
+        currentState[columnNumber][rowNumber] = color
 
+        // TODO, this is the scale value, extract it somewhere
         val x = rowNumber * 8
         val y = columnNumber * 8
 
         // TODO: fix colors here
         graphics.color = Color.BLACK
         graphics.drawRect(x, y, 8, 8)
-        if (color == 1) {
-            graphics.color = Color.BLUE
-        } else if (color == 0) {
-            graphics.color = Color.WHITE
-        }
+        graphics.color = colorConverter.convert(color)
         graphics.fillRect(x, y, 8, 8)
     }
 
-    private fun shouldDraw(rowNumber: Int, columnNumber: Int, color: Int): Boolean {
-        val currentColor = currentState[rowNumber][columnNumber]
+    private fun shouldDraw(rowNumber: Int, columnNumber: Int, color: PixelColor): Boolean {
+        val currentColor = currentState[columnNumber][rowNumber]
         return currentColor != color
     }
 }
