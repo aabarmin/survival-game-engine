@@ -14,4 +14,8 @@ data class PixelColor(
     companion object {
         val TRANSPARENT = PixelColor(255, 255, 255, 100)
     }
+
+    fun isTransparent(): Boolean {
+        return transparency == 100
+    }
 }

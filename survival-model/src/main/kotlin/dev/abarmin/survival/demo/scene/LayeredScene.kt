@@ -16,8 +16,13 @@ abstract class LayeredScene : Scene {
      * color of the latest layer is taken.
      */
     override fun getColor(x: Int, y: Int): PixelColor {
-        val topLayer = getLayers()[getLayers().size - 1]
-        return topLayer.getColor(x, y)
+        for (layer in getLayers()) {
+            val color = layer.getColor(x, y)
+            if (!color.isTransparent()) {
+                return color
+            }
+        }
+        return PixelColor.TRANSPARENT
     }
 
     /**

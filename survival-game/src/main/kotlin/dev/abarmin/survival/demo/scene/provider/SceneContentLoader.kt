@@ -39,7 +39,7 @@ class SceneContentLoader(
              */
             val result: Array<Array<PixelColor>> =
                 Array(128) { _ -> Array(96) { _ -> PixelColor.TRANSPARENT} }
-            val whiteColor = PixelColor(255, 255, 255, 0)
+            val whiteColor = PixelColor.TRANSPARENT
             val blackColor = PixelColor(0, 0, 0, 0)
             for (item in data) {
                 if (item.cellValue == 0) {

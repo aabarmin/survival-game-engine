@@ -24,7 +24,7 @@ class IntroScene(
     )
 
     private fun createPackman(): Array<Array<PixelColor>> {
-        return Array(20) { _ -> Array(20) { _ -> PixelColor(0, 0, 0, 0) } }
+        return Array(20) { _ -> Array(20) { _ -> PixelColor(0, 255, 0, 0) } }
     }
 
     override fun getLayers(): List<SceneLayer> {
