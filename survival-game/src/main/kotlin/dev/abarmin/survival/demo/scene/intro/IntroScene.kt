@@ -1,7 +1,9 @@
 package dev.abarmin.survival.demo.scene.intro
 
 import dev.abarmin.survival.demo.controller.SceneController
-import dev.abarmin.survival.demo.scene.base.Scene
+import dev.abarmin.survival.demo.scene.PixelColor
+import dev.abarmin.survival.demo.scene.Scene
+import dev.abarmin.survival.demo.scene.SceneUpdateContext
 import dev.abarmin.survival.demo.scene.provider.SceneContentLoader
 import org.springframework.stereotype.Component
 
@@ -28,10 +30,8 @@ class IntroScene(
         return content
     }
 
-    override fun update() {
-        /**
-         * Right now, there is nothing here
-         */
+    override fun update(context: SceneUpdateContext) {
+
     }
 
     override fun isDone(): Boolean {
@@ -40,5 +40,9 @@ class IntroScene(
 
     override fun getSceneController(): SceneController {
         return introController
+    }
+
+    override fun getColor(x: Int, y: Int): PixelColor {
+        TODO("Not yet implemented")
     }
 }

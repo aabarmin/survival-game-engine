@@ -1,5 +1,7 @@
 package dev.abarmin.survival.demo.scene.base
 
+import dev.abarmin.survival.demo.scene.Scene
+
 /**
  * The listener is called when the scene is changed.
  *

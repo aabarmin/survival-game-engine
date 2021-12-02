@@ -2,6 +2,7 @@ package dev.abarmin.survival.demo
 
 import dev.abarmin.survival.demo.canvas.MainCanvas
 import dev.abarmin.survival.demo.controller.MainController
+import dev.abarmin.survival.demo.scene.SceneUpdateContext
 import dev.abarmin.survival.demo.scene.base.SceneColorProvider
 import dev.abarmin.survival.demo.scene.main.MainGameScene
 import dev.abarmin.survival.demo.viewpoint.ViewPoint
@@ -47,11 +48,13 @@ class SurvivalGame(
         gameScene.init()
         /**
          * Starting background tasks:
+         * - prepare context
          * - redraw task
          * - scene liveness task
          */
+        val context = SceneUpdateContext(viewPoint)
         val backgroundTask = Runnable {
-            gameScene.update()
+            gameScene.update(context)
             mainCanvas.repaint()
         }
         Executors.newSingleThreadScheduledExecutor()

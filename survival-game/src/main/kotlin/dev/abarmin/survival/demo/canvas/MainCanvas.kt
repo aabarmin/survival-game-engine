@@ -1,7 +1,7 @@
 package dev.abarmin.survival.demo.canvas
 
 import dev.abarmin.survival.demo.scene.base.SceneColorProvider
-import dev.abarmin.survival.demo.scene.base.Scene
+import dev.abarmin.survival.demo.scene.Scene
 import dev.abarmin.survival.demo.viewpoint.ViewPoint
 import java.awt.Canvas
 import java.awt.Color
@@ -20,7 +20,7 @@ class MainCanvas(
 ) : Canvas() {
     // this is the current state of the canvas - what is actually displayed
     // required not to draw everything every time
-    private val currentState = Array(viewPoint.width) { i -> IntArray(viewPoint.height) { color -> -1 } }
+    private val currentState = Array(viewPoint.width) { _ -> IntArray(viewPoint.height) { _ -> -1 } }
 
     override fun paint(g: Graphics) {
         draw(g, false)

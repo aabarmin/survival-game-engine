@@ -2,7 +2,9 @@ package dev.abarmin.survival.demo.scene.main
 
 import dev.abarmin.survival.demo.controller.MainController
 import dev.abarmin.survival.demo.controller.SceneController
-import dev.abarmin.survival.demo.scene.base.Scene
+import dev.abarmin.survival.demo.scene.PixelColor
+import dev.abarmin.survival.demo.scene.Scene
+import dev.abarmin.survival.demo.scene.SceneUpdateContext
 import dev.abarmin.survival.demo.scene.provider.SceneProvider
 import org.springframework.stereotype.Component
 
@@ -42,8 +44,8 @@ class MainGameScene(
         return currentScene.getContent()
     }
 
-    override fun update() {
-        currentScene.update()
+    override fun update(context: SceneUpdateContext) {
+        currentScene.update(context)
     }
 
     override fun isDone(): Boolean {
@@ -71,5 +73,9 @@ class MainGameScene(
 
     fun setMainController(controller: MainController) {
         this.mainController = controller
+    }
+
+    override fun getColor(x: Int, y: Int): PixelColor {
+        TODO("Not yet implemented")
     }
 }

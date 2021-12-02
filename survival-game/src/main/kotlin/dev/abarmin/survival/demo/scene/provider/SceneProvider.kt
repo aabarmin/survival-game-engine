@@ -1,6 +1,6 @@
 package dev.abarmin.survival.demo.scene.provider
 
-import dev.abarmin.survival.demo.scene.base.Scene
+import dev.abarmin.survival.demo.scene.Scene
 import dev.abarmin.survival.demo.scene.intro.IntroScene
 import org.springframework.stereotype.Component
 

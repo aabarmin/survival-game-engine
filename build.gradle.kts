@@ -1,8 +1,10 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    id("org.springframework.boot") version "2.6.1" apply false
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.6.0"
+    kotlin("plugin.spring") version "1.6.0"
 }
 
 group = "dev.abarmin"
@@ -18,6 +20,13 @@ allprojects {
     repositories {
         mavenCentral()
     }
+}
+
+subprojects {
+    apply(plugin = "org.springframework.boot")
+    apply(plugin = "io.spring.dependency-management")
+    apply(plugin = "org.jetbrains.kotlin.plugin.spring")
+    apply(plugin = "org.jetbrains.kotlin.jvm")
 
     tasks.withType<KotlinCompile> {
         kotlinOptions {
@@ -31,11 +40,6 @@ allprojects {
     tasks.withType<Test> {
         useJUnitPlatform()
     }
-}
-
-subprojects {
-    apply(plugin = "io.spring.dependency-management")
-    apply(plugin = "kotlin")
 
     configurations {
         compileOnly {
