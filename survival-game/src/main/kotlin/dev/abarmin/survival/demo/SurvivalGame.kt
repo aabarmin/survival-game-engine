@@ -58,6 +58,7 @@ class SurvivalGame(
         val context = SceneUpdateContext(viewPoint)
         val backgroundTask = Runnable {
             gameScene.update(context)
+            gameScene.isDone(context)
             mainCanvas.repaint()
         }
         Executors.newSingleThreadScheduledExecutor()

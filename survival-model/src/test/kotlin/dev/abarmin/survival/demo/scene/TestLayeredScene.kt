@@ -7,7 +7,7 @@ class TestLayeredScene(private val layers: List<SceneLayer>) : LayeredScene() {
         return layers
     }
 
-    override fun isDone(): Boolean {
+    override fun isDone(context: SceneUpdateContext): Boolean {
         TODO("Not yet implemented")
     }
 

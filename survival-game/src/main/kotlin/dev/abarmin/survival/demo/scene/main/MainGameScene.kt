@@ -41,11 +41,11 @@ class MainGameScene(
         currentScene.update(context)
     }
 
-    override fun isDone(): Boolean {
+    override fun isDone(context: SceneUpdateContext): Boolean {
         /**
          * Checking if the current scene is done and if necessary, loading the following scene.
          */
-        if (currentScene.isDone()) {
+        if (currentScene.isDone(context)) {
             sceneNumber++
             if (sceneNumber > sceneSequence.size - 1) {
                 /**

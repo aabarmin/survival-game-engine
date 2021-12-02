@@ -21,7 +21,7 @@ interface Scene {
     /**
      * Some checker that this scene is done and it is necessary to move to another scene.
      */
-    fun isDone(): Boolean
+    fun isDone(context: SceneUpdateContext): Boolean
 
     /**
      * Get controller configured for the given scene.

@@ -16,13 +16,14 @@ class IntroScene(
     private val sceneController: SceneController,
     private val contentLoader: SceneContentLoader
 ) : LayeredScene() {
+    private val packmanSprite = JumpingPackmanSprite(
+        createPackman(),
+        PixelPosition(0, 50)
+    )
     private val layers: List<SceneLayer> = listOf(
         StaticSceneLayer(contentLoader.loadContent("introScene")),
         DynamicSceneLayer(listOf(
-            JumpingPackmanSprite(
-            createPackman(),
-            PixelPosition(0, 50)
-        )
+            packmanSprite
         ))
     )
 
@@ -34,8 +35,8 @@ class IntroScene(
         return layers
     }
 
-    override fun isDone(): Boolean {
-        TODO("Not yet implemented")
+    override fun isDone(context: SceneUpdateContext): Boolean {
+        return packmanSprite.getTopLeft().x > 128
     }
 
     override fun getSceneController(): SceneController {
