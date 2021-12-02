@@ -3,7 +3,6 @@ package dev.abarmin.survival.demo.scene.intro
 import dev.abarmin.survival.demo.controller.SceneController
 import dev.abarmin.survival.demo.scene.*
 import dev.abarmin.survival.demo.scene.provider.SceneContentLoader
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 /**
@@ -17,8 +16,16 @@ class IntroScene(
     private val contentLoader: SceneContentLoader
 ) : LayeredScene() {
     private val layers: List<SceneLayer> = listOf(
-        StaticSceneLayer(contentLoader.loadContent("introScene"))
+        StaticSceneLayer(contentLoader.loadContent("introScene")),
+        DynamicSceneLayer(listOf(JumpingPackmanSprite(
+            createPackman(),
+            PixelPosition(0, 50)
+        )))
     )
+
+    private fun createPackman(): Array<Array<PixelColor>> {
+        return Array(20) { _ -> Array(20) { _ -> PixelColor(0, 0, 0, 0) } }
+    }
 
     override fun getLayers(): List<SceneLayer> {
         return layers

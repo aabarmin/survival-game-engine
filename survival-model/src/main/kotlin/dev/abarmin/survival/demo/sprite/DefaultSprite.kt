@@ -8,9 +8,9 @@ import dev.abarmin.survival.demo.scene.PixelPosition
  *
  * @author Aleksandr Barmin
  */
-class DefaultSprite(
-    val data: Array<Array<PixelColor>>,
-    val position: PixelPosition
+open class DefaultSprite(
+    private var data: Array<Array<PixelColor>>,
+    private var position: PixelPosition
 ) : Sprite {
     override fun getWidth(): Int {
         return data[0].size
