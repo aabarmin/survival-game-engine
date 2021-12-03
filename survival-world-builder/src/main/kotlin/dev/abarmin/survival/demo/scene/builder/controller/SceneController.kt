@@ -18,6 +18,8 @@ class SceneController(
     val sceneService: SceneBuilderService
 ) {
 
+
+
     @PostMapping("")
     fun save(@RequestBody request: SaveRequest) {
         sceneService.save(request.name, request.data)
