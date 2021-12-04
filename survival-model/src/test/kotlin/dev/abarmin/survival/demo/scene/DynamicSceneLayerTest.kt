@@ -13,7 +13,7 @@ internal class DynamicSceneLayerTest {
 
     @BeforeEach
     internal fun setUp() {
-        uut = DynamicSceneLayer(listOf(
+        uut = DynamicSceneLayer(arrayOf(
             TestUtils.randomSprite(20, 20, PixelPosition(0, 0)),
             TestUtils.randomSprite(20, 20, PixelPosition(20, 20))
         ))

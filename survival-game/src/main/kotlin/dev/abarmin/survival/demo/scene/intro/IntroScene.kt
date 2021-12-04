@@ -22,7 +22,7 @@ class IntroScene(
     )
     private val layers: List<SceneLayer> = listOf(
         StaticSceneLayer(contentLoader.loadContent("introScene")),
-        DynamicSceneLayer(listOf(
+        DynamicSceneLayer(arrayOf(
             packmanSprite
         ))
     )

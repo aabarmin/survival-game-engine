@@ -20,6 +20,7 @@ class SceneLayerTransformer(
         return when(layer) {
             is StaticSceneLayer -> toModel(layer)
             is DynamicSceneLayer -> toModel(layer)
+            else -> throw IllegalArgumentException()
         }
     }
 

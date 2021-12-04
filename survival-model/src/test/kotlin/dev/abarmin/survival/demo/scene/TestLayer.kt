@@ -5,7 +5,7 @@ package dev.abarmin.survival.demo.scene
  *
  * @author Aleksandr Barmin
  */
-class TestLayer(private val defaultColor: PixelColor) : SceneLayer {
+internal class TestLayer(private val defaultColor: PixelColor) : SceneLayer {
     /**
      * Always returns white color.
      */
