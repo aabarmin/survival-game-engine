@@ -8,6 +8,6 @@ import dev.abarmin.survival.demo.scene.builder.model.sprite.SpriteModel
  * @author Aleksandr Barmin
  */
 data class DynamicSceneLayerModel(
-    val type: String,
+    val type: String = "dynamic",
     val data: Array<SpriteModel>
 ) : SceneLayerModel(type)

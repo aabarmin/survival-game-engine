@@ -1,10 +1,7 @@
 package dev.abarmin.survival.demo.scene.builder.controller
 
 import dev.abarmin.survival.demo.scene.builder.service.SceneBuilderService
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 /**
  * The controller responsible for dealing with scenes. Right now it is just as simple
@@ -17,7 +14,10 @@ import org.springframework.web.bind.annotation.RestController
 class SceneController(
     val sceneService: SceneBuilderService
 ) {
-
+    @GetMapping("/list")
+    fun list(): Array<String> {
+        TODO("Not implemented yet")
+    }
 
 
     @PostMapping("")

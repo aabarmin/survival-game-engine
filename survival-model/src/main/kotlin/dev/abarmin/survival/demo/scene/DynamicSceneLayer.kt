@@ -7,7 +7,7 @@ import dev.abarmin.survival.demo.sprite.Sprite
  *
  * @author Aleksandr Barmin
  */
-class DynamicSceneLayer(private val sprites: List<Sprite>) : SceneLayer {
+class DynamicSceneLayer(val sprites: Array<Sprite>) : SceneLayer {
     override fun getColor(position: PixelPosition): PixelColor {
         /**
          * Should return totally transparent color if nothing to return.

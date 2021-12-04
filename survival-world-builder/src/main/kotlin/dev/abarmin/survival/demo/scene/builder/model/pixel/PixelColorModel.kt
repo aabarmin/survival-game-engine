@@ -6,5 +6,6 @@ package dev.abarmin.survival.demo.scene.builder.model.pixel
 data class PixelColorModel(
     val red: Int,
     val green: Int,
-    val blue: Int
+    val blue: Int,
+    val transparency: Int
 )

@@ -5,7 +5,7 @@ package dev.abarmin.survival.demo.scene
  *
  * @author Aleksandr Barmin
  */
-interface SceneLayer {
+sealed interface SceneLayer {
     /**
      * Get color of the particular pixel of the layer.
      */
