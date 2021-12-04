@@ -50,6 +50,8 @@ subprojects {
     dependencies {
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+        testImplementation("org.assertj:assertj-core:3.21.0")
         testImplementation("org.springframework.boot:spring-boot-starter-test")
     }
 }
