@@ -9,24 +9,20 @@ import org.springframework.stereotype.Component
  * @author Aleksandr Barmin
  */
 @Component
-class SceneTransformer(val repository: SceneRepository) {
+class SceneTransformer(val layerTransformer: LayerTransformer) {
     fun toModel(domain: SceneEntity): SceneInfo {
         return SceneInfo(
-            name = domain.name,
-            type = domain.type,
-            layers = listOf()
+            domain.name,
+            domain.layers.map { layerTransformer.toModel(it) },
+            domain.type
         )
     }
 
     fun toDomain(model: SceneInfo): SceneEntity {
-        var domain = repository.findByName(model.name)
-            .orElse(
-                SceneEntity(
-                    name = model.name,
-                    type = model.type,
-                    layers = setOf() // TODO, fix implementation
-                )
-            )
-        return domain
+        return SceneEntity(
+            model.name,
+            model.type,
+            model.layers.map { layerTransformer.toDomain(it) }
+        )
     }
 }

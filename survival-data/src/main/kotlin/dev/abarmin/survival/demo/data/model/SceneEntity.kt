@@ -8,5 +8,5 @@ package dev.abarmin.survival.demo.data.model
 data class SceneEntity(
     var name: String,
     var type: String,
-    val layers: Set<SceneLayerEntity>
+    val layers: List<SceneLayerEntity>
 )

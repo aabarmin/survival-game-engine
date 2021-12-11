@@ -3,6 +3,7 @@ package dev.abarmin.survival.demo.data.config
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.PropertySource
+import java.lang.RuntimeException
 import java.nio.file.Files
 import java.nio.file.Path
 import javax.annotation.PostConstruct
@@ -37,6 +38,14 @@ class StorageConfiguration {
         val scenes = Path.of(scenesFolder)
         if (!Files.exists(scenes)) {
             Files.createDirectories(scenes)
+        }
+    }
+
+    fun getStorage(type: String): Path {
+        return when(type) {
+            "scene" -> Path.of(scenesFolder)
+            "sprite" -> Path.of(spritesFolder)
+            else -> throw RuntimeException("Unsupported type $type")
         }
     }
 }

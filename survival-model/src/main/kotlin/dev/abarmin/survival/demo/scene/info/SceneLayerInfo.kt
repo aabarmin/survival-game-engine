@@ -6,5 +6,6 @@ package dev.abarmin.survival.demo.scene.info
  * @author Aleksandr Barmin
  */
 data class SceneLayerInfo(
+    val type: String,
     val content: BinaryContent
 )
