@@ -1,14 +1,19 @@
 package dev.abarmin.survival.demo.data.service
 
+import dev.abarmin.survival.demo.data.ConfigurationForTests
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest
+import org.springframework.test.context.ContextConfiguration
+import org.springframework.test.context.junit.jupiter.SpringExtension
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
 
 /**
  * @author Aleksandr Barmin
  */
-@DataJdbcTest
+@ExtendWith(SpringExtension::class)
+@ContextConfiguration(classes = [ConfigurationForTests::class])
 internal class SceneServiceTest {
     @Autowired
     lateinit var uut: SceneService

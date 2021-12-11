@@ -1,7 +1,6 @@
 package dev.abarmin.survival.demo.data.repository
 
 import dev.abarmin.survival.demo.data.model.SceneEntity
-import org.springframework.data.repository.CrudRepository
 import java.util.*
 
 /**
@@ -9,9 +8,14 @@ import java.util.*
  *
  * @author Aleksandr Barmin
  */
-interface SceneRepository : CrudRepository<SceneEntity, Long> {
+interface SceneRepository {
     /**
      * Find a scene by its name.
      */
     fun findByName(name: String): Optional<SceneEntity>
+
+    /**
+     * Save an entity.
+     */
+    fun save(entity: SceneEntity): SceneEntity
 }
