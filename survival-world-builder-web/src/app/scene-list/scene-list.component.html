@@ -1,8 +1,8 @@
 <app-progressor [enabled]="loading"></app-progressor>
 
 <mat-nav-list>
-    <a mat-list-item *ngFor="let scene of scenes" href="/scenes/{{scene}}">
+    <a mat-list-item *ngFor="let scene of scenes" href="/scenes/{{scene.id}}">
         <mat-icon matListIcon>article</mat-icon>
-        <span matLine>{{scene}}</span>
+        <span matLine>{{scene.name}}</span>
     </a>
 </mat-nav-list>

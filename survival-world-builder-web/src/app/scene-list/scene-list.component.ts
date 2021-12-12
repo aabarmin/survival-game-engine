@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SceneRow } from '../scene-row';
 import { SceneService } from '../scene.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { SceneService } from '../scene.service';
 export class SceneListComponent implements OnInit {
 
   loading: boolean = true;
-  scenes: string[] = [];
+  scenes: SceneRow[] = [];
 
   constructor(private sceneService: SceneService) { }
 
