@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { SceneCell } from './scene-cell';
 
 @Injectable({
@@ -8,9 +8,16 @@ import { SceneCell } from './scene-cell';
 })
 export class SceneService {
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
+
+  public findAll(): Observable<string[]> {
+    // return this.http.get<string[]>("/api/scenes");
+    return of([
+      "first",
+      "second",
+      "third"
+    ])
+  }
 
   public save(name: string, data: SceneCell[]): Observable<any> {
     const request = {

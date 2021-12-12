@@ -1,2 +1,8 @@
-<app-scene-toolbar (onSave)="onSave($event)"></app-scene-toolbar>
-<app-scene #scene></app-scene>
+<mat-toolbar>
+    <span>Scenes</span>
+    
+    <div class="spacer"></div>
+    <button class="button-with-icon" mat-raised-button color="primary">New Scene</button>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
