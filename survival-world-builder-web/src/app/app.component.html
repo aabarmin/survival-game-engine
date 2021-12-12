@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<mat-drawer-container autosize>
+    <mat-drawer #drawer mode="over" class="app-sidebar">
+        <app-sidebar (onMenuItemSelected)="onSidebarToggle()"></app-sidebar>
+    </mat-drawer>
+
+    <app-toolbar (onSidebarToggle)="onSidebarToggle()"></app-toolbar>
+
+    <router-outlet></router-outlet>
+</mat-drawer-container>

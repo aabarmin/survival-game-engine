@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component
 class SceneTransformer(val layerTransformer: LayerTransformer) {
     fun toModel(domain: SceneEntity): SceneInfo {
         return SceneInfo(
+            domain.id,
             domain.name,
             domain.layers.map { layerTransformer.toModel(it) },
             domain.type
@@ -20,6 +21,7 @@ class SceneTransformer(val layerTransformer: LayerTransformer) {
 
     fun toDomain(model: SceneInfo): SceneEntity {
         return SceneEntity(
+            model.id,
             model.name,
             model.type,
             model.layers.map { layerTransformer.toDomain(it) }

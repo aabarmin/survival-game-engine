@@ -6,6 +6,7 @@ package dev.abarmin.survival.demo.scene.info
  * @author Aleksandr Barmin
  */
 data class SceneInfo(
+    val id: String,
     val name: String,
     val layers: List<SceneLayerInfo>,
     val type: String = "layered"
