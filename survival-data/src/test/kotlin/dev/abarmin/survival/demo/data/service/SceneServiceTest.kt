@@ -40,6 +40,7 @@ internal class SceneServiceTest {
     internal fun `Find all should return all from repo`() {
         `when`(repository.findAll()).thenReturn(listOf(
             SceneEntity(
+                "test-scene",
                 "test scene",
                 "layered",
                 listOf()
@@ -69,7 +70,7 @@ internal class SceneServiceTest {
             return@thenAnswer Optional.ofNullable(sceneEntity)
         }
 
-        val scene = factory.createScene("Temporary scene")
+        val scene = factory.createScene("Temporary scene", "temporary-scene")
         val savedScene = uut.save(scene)
         assertThat(savedScene).isNotNull
             .extracting("name")

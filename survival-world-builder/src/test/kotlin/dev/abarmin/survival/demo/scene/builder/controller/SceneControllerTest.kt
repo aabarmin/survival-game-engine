@@ -55,6 +55,7 @@ internal class SceneControllerTest {
 
     private fun createScene(): SceneInfo {
         return SceneInfo(
+            "temporary-name",
             "temporary name",
             listOf()
         )

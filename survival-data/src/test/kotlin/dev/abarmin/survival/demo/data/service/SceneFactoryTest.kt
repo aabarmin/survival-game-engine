@@ -21,7 +21,7 @@ internal class SceneFactoryTest {
 
     @Test
     internal fun `Check if a new scene is created`() {
-        val scene: SceneInfo = uut.createScene("Test scene")
+        val scene: SceneInfo = uut.createScene("Test scene", "test-scene")
 
         assertThat(scene).isNotNull()
             .extracting("name")

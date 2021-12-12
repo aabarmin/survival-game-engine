@@ -13,7 +13,7 @@ class SceneFactory {
     /**
      * Creates a new empty scene.
      */
-    fun createScene(name: String): SceneInfo {
-        return SceneInfo(name, mutableListOf())
+    fun createScene(name: String, id: String): SceneInfo {
+        return SceneInfo(id, name, mutableListOf())
     }
 }
