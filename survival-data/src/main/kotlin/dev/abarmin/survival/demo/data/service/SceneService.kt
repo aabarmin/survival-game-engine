@@ -14,6 +14,11 @@ class SceneService(
     val transformer: SceneTransformer
 ) {
 
+    fun findAll(): List<SceneInfo> {
+        return repository.findAll()
+            .map { transformer.toModel(it) }
+    }
+
     fun save(scene: SceneInfo): SceneInfo {
         val domain = transformer.toDomain(scene)
         val saved = repository.save(domain)

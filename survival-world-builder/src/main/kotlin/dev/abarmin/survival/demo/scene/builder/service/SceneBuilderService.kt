@@ -14,6 +14,7 @@ import javax.annotation.PostConstruct
  * @author Aleksandr Barmin
  */
 @Service
+@Deprecated("Use SceneService from the data module")
 class SceneBuilderService(
     val mapper: ObjectMapper
 ) {
@@ -22,7 +23,7 @@ class SceneBuilderService(
 
     @PostConstruct
     fun init() {
-        var baseContainer = Path.of(this.baseFolder)
+        val baseContainer = Path.of(this.baseFolder)
         if (!Files.exists(baseContainer)) {
             Files.createDirectories(baseContainer)
         }

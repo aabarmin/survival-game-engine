@@ -1,6 +1,7 @@
 package dev.abarmin.survival.demo.data.repository
 
 import dev.abarmin.survival.demo.data.model.SceneEntity
+import dev.abarmin.survival.demo.scene.info.SceneInfo
 import java.util.*
 
 /**
@@ -18,4 +19,9 @@ interface SceneRepository {
      * Save an entity.
      */
     fun save(entity: SceneEntity): SceneEntity
+
+    /**
+     * Return all the found scenes.
+     */
+    fun findAll(): List<SceneEntity>
 }
