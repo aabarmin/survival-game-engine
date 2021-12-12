@@ -11,6 +11,11 @@ export class SceneService {
 
   constructor(private http: HttpClient) { }
 
+  public createScene(data: SceneRow): Observable<SceneRow> {
+    const url = `/api/scenes/${data.id}`;
+    return this.http.post<SceneRow>(url, data)
+  }
+
   public findAll(): Observable<SceneRow[]> {
     // return this.http.get<string[]>("/api/scenes");
     return of([

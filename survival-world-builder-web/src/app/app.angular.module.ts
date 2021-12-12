@@ -7,6 +7,8 @@ import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatListModule } from '@angular/material/list'
 import { MatCardModule } from '@angular/material/card'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatInputModule } from '@angular/material/input'
 
 @NgModule({
     imports: [
@@ -15,7 +17,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar'
         MatButtonModule,
         MatListModule,
         MatCardModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatDialogModule,
+        MatInputModule
     ], 
     exports: [
         MatToolbarModule,
@@ -24,7 +28,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar'
         MatSidenavModule,
         MatListModule,
         MatCardModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatDialogModule,
+        MatInputModule
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

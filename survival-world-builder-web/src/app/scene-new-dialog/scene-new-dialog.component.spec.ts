@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SceneToolbarComponent } from './scene-toolbar.component';
+import { SceneNewDialogComponent } from './scene-new-dialog.component';
 
-describe('SceneToolbarComponent', () => {
-  let component: SceneToolbarComponent;
-  let fixture: ComponentFixture<SceneToolbarComponent>;
+describe('SceneNewDialogComponent', () => {
+  let component: SceneNewDialogComponent;
+  let fixture: ComponentFixture<SceneNewDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SceneToolbarComponent ]
+      declarations: [ SceneNewDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SceneToolbarComponent);
+    fixture = TestBed.createComponent(SceneNewDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

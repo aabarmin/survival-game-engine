@@ -30,6 +30,11 @@ class SceneController(
         }
     }
 
+    @PostMapping("/{id}")
+    fun save(@RequestBody model: SceneRowModel, @PathVariable("id") id: String): SceneRowModel {
+        // save to backend here
+        return model
+    }
 
     @PostMapping("")
     fun save(@RequestBody request: SaveRequest) {

@@ -15,20 +15,23 @@ import { AppSidebarComponent } from './app-sidebar/app-sidebar.component';
 import { AppDashboardComponent } from './app-dashboard/app-dashboard.component';
 import { SceneListComponent } from './scene-list/scene-list.component';
 import { AppProgressorComponent } from './app-progressor/app-progressor.component';
+import { SceneNewDialogComponent } from './scene-new-dialog/scene-new-dialog.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     SceneComponent,
     SceneToolbarComponent,
-    ScenePageComponent,
 
     AppToolbarComponent,
     AppProgressorComponent, 
     AppDashboardComponent, 
     AppSidebarComponent, 
 
-    SceneListComponent
+    ScenePageComponent,
+    SceneListComponent,
+    SceneNewDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,14 @@ import { AppProgressorComponent } from './app-progressor/app-progressor.componen
     BrowserAnimationsModule,
     AppAngularModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS, 
+      useValue: {
+        hasBackdrop: false
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
