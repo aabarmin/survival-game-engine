@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppDashboardComponent } from './app-dashboard/app-dashboard.component';
 import { SceneListComponent } from './scene-list/scene-list.component';
 import { ScenePageComponent } from './scene-page/scene-page.component';
+import { SceneViewComponent } from './scene-view/scene-view.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         "path": "",
         "component": SceneListComponent
+      },
+      {
+        "path": ":id",
+        "component": SceneViewComponent
       }
     ]
   }

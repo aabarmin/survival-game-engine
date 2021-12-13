@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { SceneCell } from './scene-cell';
+import { SceneModel } from './scene-model';
 import { SceneRow } from './scene-row';
 
 @Injectable({
@@ -18,6 +19,11 @@ export class SceneService {
 
   public findAll(): Observable<SceneRow[]> {
     return this.http.get<SceneRow[]>("/api/scenes");
+  }
+
+  public findOne(id: string): Observable<SceneModel> {
+    const url = `/api/scenes/${id}`;
+    return this.http.get<SceneModel>(url);
   }
 
   public save(name: string, data: SceneCell[]): Observable<any> {

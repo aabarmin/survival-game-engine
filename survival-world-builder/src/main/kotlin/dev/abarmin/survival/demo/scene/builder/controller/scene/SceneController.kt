@@ -1,8 +1,6 @@
 package dev.abarmin.survival.demo.scene.builder.controller.scene
 
-import dev.abarmin.survival.demo.data.service.SceneService
 import dev.abarmin.survival.demo.scene.builder.controller.SaveRequest
-import dev.abarmin.survival.demo.scene.builder.model.scene.SceneRowModel
 import dev.abarmin.survival.demo.scene.builder.service.SceneBuilderService
 import org.springframework.web.bind.annotation.*
 
