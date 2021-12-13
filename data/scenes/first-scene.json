@@ -1,0 +1,14 @@
+{
+  "id" : "first-scene",
+  "name" : "First scene",
+  "type" : "LAYERED",
+  "layers" : [ {
+    "id" : "data_0.json",
+    "name" : "Automatically created layer",
+    "type" : "STATIC",
+    "file" : {
+      "type" : "LAYER",
+      "name" : "data_0.json"
+    }
+  } ]
+}
