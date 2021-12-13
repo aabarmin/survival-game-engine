@@ -10,6 +10,7 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.util.*
 import kotlin.io.path.name
+import kotlin.streams.toList
 
 /**
  * @author Aleksandr Barmin
@@ -17,7 +18,6 @@ import kotlin.io.path.name
 @Component
 class SceneRepositoryImpl(
     private val configuration: StorageConfiguration,
-    private val filenameSanitizer: FilenameSanitizer,
     private val jsonReader: JsonReader,
     private val jsonWriter: JsonWriter) : SceneRepository {
 
