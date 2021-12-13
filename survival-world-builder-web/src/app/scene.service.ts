@@ -17,17 +17,7 @@ export class SceneService {
   }
 
   public findAll(): Observable<SceneRow[]> {
-    // return this.http.get<string[]>("/api/scenes");
-    return of([
-      {
-        id: "first-row",
-        name: "First scene"
-      },
-      {
-        id: "second-scene",
-        name: "Second scene"
-      }
-    ])
+    return this.http.get<SceneRow[]>("/api/scenes");
   }
 
   public save(name: string, data: SceneCell[]): Observable<any> {

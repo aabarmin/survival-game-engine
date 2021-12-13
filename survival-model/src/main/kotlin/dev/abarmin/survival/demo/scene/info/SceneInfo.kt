@@ -9,5 +9,5 @@ data class SceneInfo(
     val id: String,
     val name: String,
     val layers: List<SceneLayerInfo>,
-    val type: String = "layered"
+    val type: SceneType = SceneType.LAYERED
 )

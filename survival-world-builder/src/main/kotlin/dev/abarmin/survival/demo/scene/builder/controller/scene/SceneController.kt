@@ -1,6 +1,7 @@
-package dev.abarmin.survival.demo.scene.builder.controller
+package dev.abarmin.survival.demo.scene.builder.controller.scene
 
 import dev.abarmin.survival.demo.data.service.SceneService
+import dev.abarmin.survival.demo.scene.builder.controller.SaveRequest
 import dev.abarmin.survival.demo.scene.builder.model.scene.SceneRowModel
 import dev.abarmin.survival.demo.scene.builder.service.SceneBuilderService
 import org.springframework.web.bind.annotation.*
@@ -13,28 +14,10 @@ import org.springframework.web.bind.annotation.*
  */
 @RestController
 @RequestMapping("/scenes")
+@Deprecated("Nothing to do here, just remove")
 class SceneController(
-    val sceneBuilderService: SceneBuilderService,
-    val sceneService: SceneService
+    val sceneBuilderService: SceneBuilderService
 ) {
-    /**
-     * This endpoint should return all names of registered scenes.
-     */
-    @GetMapping("")
-    fun list(): List<SceneRowModel> {
-        return sceneService.findAll().map {
-            return@map SceneRowModel(
-                it.id,
-                it.name
-            )
-        }
-    }
-
-    @PostMapping("/{id}")
-    fun save(@RequestBody model: SceneRowModel, @PathVariable("id") id: String): SceneRowModel {
-        // save to backend here
-        return model
-    }
 
     @PostMapping("")
     fun save(@RequestBody request: SaveRequest) {

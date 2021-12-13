@@ -13,7 +13,7 @@ interface SceneRepository {
     /**
      * Find a scene by its name.
      */
-    fun findByName(name: String): Optional<SceneEntity>
+    fun findById(id: String): Optional<SceneEntity>
 
     /**
      * Save an entity.

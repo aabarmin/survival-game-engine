@@ -1,5 +1,6 @@
 package dev.abarmin.survival.demo.data.config
 
+import dev.abarmin.survival.demo.scene.info.ContentType
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.PropertySource
@@ -17,16 +18,19 @@ import javax.annotation.PostConstruct
 @PropertySource("classpath:./storage-configuration.properties")
 class StorageConfiguration {
     @Value("\${data.storage}")
-    lateinit var storageFolder: String
+    private lateinit var storageFolder: String
 
     @Value("\${data.storage.sprites}")
-    lateinit var spritesFolder: String
+    private lateinit var spritesFolder: String
 
     @Value("\${data.storage.scenes}")
-    lateinit var scenesFolder: String
+    private lateinit var scenesFolder: String
+
+    @Value("\${data.storage.layers}")
+    private lateinit var layersFolder: String
 
     @PostConstruct
-    fun init() {
+    private fun init() {
         val storage = Path.of(storageFolder)
         if (!Files.exists(storage)) {
             Files.createDirectories(storage)
@@ -39,12 +43,16 @@ class StorageConfiguration {
         if (!Files.exists(scenes)) {
             Files.createDirectories(scenes)
         }
+        val layers = Path.of(layersFolder)
+        if (!Files.exists(layers)) {
+            Files.createDirectories(layers)
+        }
     }
 
-    fun getStorage(type: String): Path {
+    fun getStorage(type: ContentType): Path {
         return when(type) {
-            "scene" -> Path.of(scenesFolder)
-            "sprite" -> Path.of(spritesFolder)
+            ContentType.SCENE -> Path.of(scenesFolder)
+            ContentType.LAYER -> Path.of(layersFolder)
             else -> throw RuntimeException("Unsupported type $type")
         }
     }

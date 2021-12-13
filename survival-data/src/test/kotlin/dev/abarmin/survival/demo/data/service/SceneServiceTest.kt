@@ -3,7 +3,8 @@ package dev.abarmin.survival.demo.data.service
 import dev.abarmin.survival.demo.data.ConfigurationForTests
 import dev.abarmin.survival.demo.data.model.SceneEntity
 import dev.abarmin.survival.demo.data.repository.SceneRepository
-import dev.abarmin.survival.demo.scene.info.SceneInfo
+import dev.abarmin.survival.demo.data.service.factory.SceneFactory
+import dev.abarmin.survival.demo.scene.info.SceneType
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -42,7 +43,7 @@ internal class SceneServiceTest {
             SceneEntity(
                 "test-scene",
                 "test scene",
-                "layered",
+                SceneType.LAYERED,
                 listOf()
             )
         ))
@@ -64,19 +65,25 @@ internal class SceneServiceTest {
 
             return@thenAnswer entity
         }
-        whenever(repository.findByName(anyString())).thenAnswer { invocation ->
+        whenever(repository.findById(anyString())).thenAnswer { invocation ->
             val name = invocation.getArgument<String>(0)
             val sceneEntity = temporaryStorage.get(name)
             return@thenAnswer Optional.ofNullable(sceneEntity)
         }
 
-        val scene = factory.createScene("Temporary scene", "temporary-scene")
+        val scene = factory.createScene("temporary-scene", "Temporary scene")
         val savedScene = uut.save(scene)
         assertThat(savedScene).isNotNull
             .extracting("name")
             .isEqualTo("Temporary scene")
 
-        val loadedScene = uut.findScene("Temporary scene")
+        val sceneOptional = uut.findById("Temporary scene")
+
+        assertThat(sceneOptional).isNotNull
+        assertThat(sceneOptional.isPresent).isTrue
+
+        val loadedScene = sceneOptional.get()
+
         assertThat(loadedScene).isNotNull
             .extracting("name")
             .isEqualTo("Temporary scene")

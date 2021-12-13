@@ -6,6 +6,6 @@ package dev.abarmin.survival.demo.scene.info
  * @author Aleksandr Barmin
  */
 data class BinaryContent(
-    val type: String,
+    val type: ContentType,
     val name: String
 )
