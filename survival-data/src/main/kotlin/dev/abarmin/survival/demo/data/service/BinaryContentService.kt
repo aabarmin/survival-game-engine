@@ -1,7 +1,9 @@
 package dev.abarmin.survival.demo.data.service
 
 import dev.abarmin.survival.demo.data.config.StorageConfiguration
+import dev.abarmin.survival.demo.data.json.JsonWriter
 import dev.abarmin.survival.demo.data.repository.FilenameSanitizer
+import dev.abarmin.survival.demo.scene.PixelColor
 import dev.abarmin.survival.demo.scene.info.BinaryContent
 import org.springframework.stereotype.Service
 import java.io.InputStream
@@ -17,9 +19,15 @@ import java.nio.file.Path
  */
 @Service
 class BinaryContentService(
-    val configuration: StorageConfiguration,
-    val filenameSanitizer: FilenameSanitizer
+    private val configuration: StorageConfiguration,
+    private val jsonWriter: JsonWriter
 ) {
+    fun write(content: BinaryContent, data: Array<Array<PixelColor>>) {
+        val targetFilePath = getPath(content)
+        Files.deleteIfExists(targetFilePath)
+        jsonWriter.write(data, targetFilePath)
+    }
+
     fun read(content: BinaryContent): InputStream {
         val targetPath = getPath(content)
         if (!Files.exists(targetPath)) {
@@ -28,7 +36,7 @@ class BinaryContentService(
         return Files.newInputStream(targetPath)
     }
 
-    fun write(content: BinaryContent): OutputStream {
+    private fun write(content: BinaryContent): OutputStream {
         val targetPath = getPath(content)
         Files.deleteIfExists(targetPath)
         Files.createFile(targetPath)
@@ -41,8 +49,7 @@ class BinaryContentService(
     }
 
     private fun getPath(content: BinaryContent): Path {
-        val sanitizedName = filenameSanitizer.sanitize(content.name)
         return configuration.getStorage(content.type)
-            .resolve("$sanitizedName.json")
+            .resolve(content.name)
     }
 }

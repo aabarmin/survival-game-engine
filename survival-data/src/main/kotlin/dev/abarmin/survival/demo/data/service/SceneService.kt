@@ -4,14 +4,15 @@ import dev.abarmin.survival.demo.data.repository.SceneRepository
 import dev.abarmin.survival.demo.data.transformer.SceneTransformer
 import dev.abarmin.survival.demo.scene.info.SceneInfo
 import org.springframework.stereotype.Service
+import java.util.*
 
 /**
  * @author Aleksandr Barmin
  */
 @Service
 class SceneService(
-    val repository: SceneRepository,
-    val transformer: SceneTransformer
+    private val repository: SceneRepository,
+    private val transformer: SceneTransformer
 ) {
 
     fun findAll(): List<SceneInfo> {
@@ -25,9 +26,8 @@ class SceneService(
         return transformer.toModel(saved)
     }
 
-    fun findScene(sceneName: String): SceneInfo {
-        val domain = repository.findByName(sceneName)
-            .orElseThrow()
-        return transformer.toModel(domain)
+    fun findById(sceneId: String): Optional<SceneInfo> {
+        return repository.findById(sceneId)
+            .map { transformer.toModel(it) }
     }
 }

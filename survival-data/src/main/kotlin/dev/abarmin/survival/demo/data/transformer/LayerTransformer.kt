@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component
 class LayerTransformer(val contentTransformer: BinaryContentTransformer) {
     fun toDomain(model: SceneLayerInfo): SceneLayerEntity {
         return SceneLayerEntity(
+            model.id,
+            model.name,
             model.type,
             contentTransformer.toDomain(model.content)
         )
@@ -18,6 +20,8 @@ class LayerTransformer(val contentTransformer: BinaryContentTransformer) {
 
     fun toModel(domain: SceneLayerEntity): SceneLayerInfo {
         return SceneLayerInfo(
+            domain.id,
+            domain.name,
             domain.type,
             contentTransformer.toModel(domain.file)
         )

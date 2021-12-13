@@ -1,24 +1,22 @@
 package dev.abarmin.survival.demo.data.service
 
 import dev.abarmin.survival.demo.data.ConfigurationForTests
-import dev.abarmin.survival.demo.data.service.factory.SceneFactory
-import dev.abarmin.survival.demo.scene.info.SceneInfo
+import dev.abarmin.survival.demo.data.service.factory.SceneLayerIdFactory
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
 
 /**
  * @author Aleksandr Barmin
  */
 @ExtendWith(SpringExtension::class)
 @ContextConfiguration(classes = [ConfigurationForTests::class])
-internal class SceneFactoryTest {
+internal class SceneLayerIdFactoryTest {
     @Autowired
-    lateinit var uut: SceneFactory
+    lateinit var uut: SceneLayerIdFactory
 
     @Test
     internal fun `Check context starts`() {
@@ -26,11 +24,8 @@ internal class SceneFactoryTest {
     }
 
     @Test
-    internal fun `Check if a new scene is created`() {
-        val scene: SceneInfo = uut.createScene("test-scene", "Test Scene")
-
-        assertThat(scene).isNotNull()
-            .extracting("name")
-            .isEqualTo("Test Scene")
+    internal fun `Check if value is returned`() {
+        val generated = uut.generate()
+        assertThat(generated).isNotEmpty()
     }
 }

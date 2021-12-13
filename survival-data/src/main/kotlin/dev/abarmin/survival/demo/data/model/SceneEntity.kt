@@ -1,5 +1,7 @@
 package dev.abarmin.survival.demo.data.model
 
+import dev.abarmin.survival.demo.scene.info.SceneType
+
 /**
  * Top-level entity for scenes.
  *
@@ -8,6 +10,6 @@ package dev.abarmin.survival.demo.data.model
 data class SceneEntity(
     val id: String,
     var name: String,
-    var type: String,
+    var type: SceneType,
     val layers: List<SceneLayerEntity>
 )

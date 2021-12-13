@@ -16,7 +16,8 @@ class JsonWriter(val objectMapper: ObjectMapper) {
         if (!Files.exists(target)) {
             Files.createFile(target)
         }
-        var targetFile = target.toFile()
-        objectMapper.writeValue(targetFile, content)
+        val targetFile = target.toFile()
+        objectMapper.writerWithDefaultPrettyPrinter()
+            .writeValue(targetFile, content)
     }
 }
