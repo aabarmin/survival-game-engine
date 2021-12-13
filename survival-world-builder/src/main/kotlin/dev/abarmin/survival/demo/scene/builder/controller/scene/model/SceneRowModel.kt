@@ -1,4 +1,4 @@
-package dev.abarmin.survival.demo.scene.builder.model.scene
+package dev.abarmin.survival.demo.scene.builder.controller.scene.model
 
 /**
  * Single row in the table of scenes.

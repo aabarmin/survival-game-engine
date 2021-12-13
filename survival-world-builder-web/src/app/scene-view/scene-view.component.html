@@ -1,0 +1,14 @@
+<mat-toolbar>
+    <button mat-button routerLink="/scenes">Back</button>
+    <div class="spacer"></div>
+    <span>Scene {{sceneName}}</span>
+</mat-toolbar>
+
+<app-progressor [enabled]="loading"></app-progressor>
+
+<mat-drawer-container class="layer-view">
+    <mat-drawer mode="side" opened class="layer-view-sidebar">
+        <app-scene-view-layers></app-scene-view-layers>
+    </mat-drawer>
+    <mat-drawer-content>Main content</mat-drawer-content>
+</mat-drawer-container>
