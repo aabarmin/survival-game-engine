@@ -12,16 +12,14 @@ import org.springframework.web.bind.annotation.RestController
  * @author Aleksandr Barmin
  */
 @RestController
-class SaveSceneController(
+class SaveSceneHandler(
     private val sceneService: SceneService,
-    private val sceneFactory: SceneFactory
-) {
+    private val sceneFactory: SceneFactory) {
 
     @PostMapping("/scenes/{id}")
     fun createScene(
         @PathVariable("id") id: String,
-        @RequestBody createRequest: SceneRowModel
-    ): SceneRowModel {
+        @RequestBody createRequest: SceneRowModel): SceneRowModel {
 
         sceneService.findById(id)
             .orElseGet { sceneFactory.createScene(createRequest.id, createRequest.name) }

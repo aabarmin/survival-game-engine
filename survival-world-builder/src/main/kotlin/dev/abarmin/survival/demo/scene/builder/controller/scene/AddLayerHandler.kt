@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController
  * @author Aleksandr Barmin
  */
 @RestController
-class AddLayerController(
+class AddLayerHandler(
     private val layerFactory: SceneLayerFactory,
     private val layerService: LayerService,
     private val transformer: SceneRestTransformer,
