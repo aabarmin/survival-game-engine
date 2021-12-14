@@ -18,6 +18,10 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { SceneViewComponent } from './scene-view/scene-view.component';
 import { SceneViewLayersComponent } from './scene-view-layers/scene-view-layers.component';
 import { LayerNewDialogComponent } from './layer-new-dialog/layer-new-dialog.component';
+import { LayerStaticComponent } from './layer-static/layer-static.component';
+import { LayerBasicComponent } from './layer-basic/layer-basic.component';
+import { LayerDynamicComponent } from './layer-dynamic/layer-dynamic.component';
+import { CanvasComponent } from './canvas/canvas.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,12 @@ import { LayerNewDialogComponent } from './layer-new-dialog/layer-new-dialog.com
     SceneViewComponent,
     SceneViewLayersComponent, 
 
-    LayerNewDialogComponent
+    LayerNewDialogComponent, 
+    LayerStaticComponent,
+    LayerBasicComponent, 
+    LayerDynamicComponent, 
+
+    CanvasComponent
   ],
   imports: [
     BrowserModule,

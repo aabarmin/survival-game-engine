@@ -6,8 +6,12 @@
 
 <app-progressor [enabled]="loading"></app-progressor>
 
-<mat-selection-list [multiple]="false">
-    <mat-list-option *ngFor="let layer of layers">
+<mat-selection-list [multiple]="false" 
+    #layerSelector
+    [(ngModel)]="selectedLayer"
+    (selectionChange)="whenLayerSelected()">
+    <mat-list-option *ngFor="let layer of layers" 
+        value="{{layer.id}}">
         {{layer.name}}
     </mat-list-option>
 </mat-selection-list>

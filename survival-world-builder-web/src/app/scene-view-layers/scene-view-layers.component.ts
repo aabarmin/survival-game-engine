@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSelectionList } from '@angular/material/list';
 import { ActivatedRoute } from '@angular/router';
 import { LayerNewDialogComponent } from '../layer-new-dialog/layer-new-dialog.component';
 import { NewLayerRequest } from '../layer-new-dialog/layer-new-request';
@@ -19,6 +20,11 @@ export class SceneViewLayersComponent implements OnInit {
   scene: SceneModel = new SceneModel();
   layers: SceneLayer[] = []
   sceneId = '';
+
+  selectedLayer: string[] = [];
+
+  @Output()
+  onLayerSelect = new EventEmitter<SceneLayer>();
 
   constructor(
     private dialog: MatDialog,
@@ -52,5 +58,17 @@ export class SceneViewLayersComponent implements OnInit {
       this.scene = model;
       this.layers = model.layers;
     })
+  }
+
+  public whenLayerSelected(): void {
+    if (this.selectedLayer.length == 0) {
+      return;
+    }
+    if (this.selectedLayer.length > 1) {
+      // unexpected behavior but still possible
+    }
+    const selected = this.selectedLayer[0];
+    const selectedLayer = this.layers.filter(layer => layer.id == selected)[0];
+    this.onLayerSelect.emit(selectedLayer);
   }
 }
