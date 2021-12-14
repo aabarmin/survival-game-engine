@@ -13,7 +13,6 @@ import { SceneService } from '../scene.service';
 export class SceneViewComponent implements OnInit {
 
   currentScene!: SceneModel
-  layerType: string = 'unknown';
   loading = true;
 
   constructor(
@@ -32,7 +31,6 @@ export class SceneViewComponent implements OnInit {
   }
 
   onLayerSelect(layer: SceneLayer) {
-    this.layerType = layer.type;
     this.router.navigate(["scenes", this.currentScene.id, layer.type.toLowerCase(), layer.id])
   }
 }
