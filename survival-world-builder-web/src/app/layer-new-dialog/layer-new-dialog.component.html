@@ -2,14 +2,17 @@
 <div mat-dialog-content>
     <p>
         <mat-form-field appearance="fill">
-            <mat-label>Scene name</mat-label>
-            <input matInput>
+            <mat-label>Layer name</mat-label>
+            <input matInput [(ngModel)]="data.name">
         </mat-form-field>
     </p>
     <p>
         <mat-form-field appearance="fill">
-            <mat-label>Scene ID</mat-label>
-            <input matInput>
+            <mat-label>Layer type</mat-label>
+            <mat-select [(ngModel)]="data.type">
+                <mat-option *ngFor="let type of types | keyvalue" 
+                    value="{{type.key}}">{{type.value}}</mat-option>
+            </mat-select>
         </mat-form-field>
     </p>
 </div>

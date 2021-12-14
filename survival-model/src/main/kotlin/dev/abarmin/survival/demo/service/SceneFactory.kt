@@ -16,16 +16,27 @@ class SceneFactory(
     private val sceneRepository: SceneRepository,
     private val layerFactory: SceneLayerFactory
 ) {
+    fun createScene(id: String, name: String, width: Int, height: Int): SceneInfo {
+        val newScene = SceneInfo(
+            id,
+            name,
+            listOf(layerFactory.createLayer(width, height)),
+            width,
+            height,
+            defaults.scene.type
+        )
+        return sceneRepository.save(newScene)
+    }
+
     /**
      * Creates a new empty scene.
      */
     fun createScene(id: String, name: String): SceneInfo {
-        val newScene = SceneInfo(
+        return createScene(
             id,
             name,
-            listOf(layerFactory.createLayer()),
-            defaults.scene.type
+            defaults.scene.width,
+            defaults.scene.height
         )
-        return sceneRepository.save(newScene)
     }
 }

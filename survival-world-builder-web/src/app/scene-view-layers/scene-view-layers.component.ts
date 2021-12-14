@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { LayerNewDialogComponent } from '../layer-new-dialog/layer-new-dialog.component';
+import { NewLayerRequest } from '../layer-new-dialog/layer-new-request';
+import { LayerService } from '../layer.service';
 import { SceneLayer } from '../scene-layer';
 import { SceneModel } from '../scene-model';
 import { SceneService } from '../scene.service';
@@ -21,6 +23,7 @@ export class SceneViewLayersComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private route: ActivatedRoute, 
+    private layerService: LayerService, 
     private sceneService: SceneService) { }
 
   ngOnInit(): void {
@@ -32,10 +35,14 @@ export class SceneViewLayersComponent implements OnInit {
 
   createNewLayer(): void {
     const dialogRef = this.dialog.open(LayerNewDialogComponent)
-    dialogRef.afterClosed().subscribe(data => {
+    dialogRef.afterClosed().subscribe((data: NewLayerRequest) => {
       if (!data) {
         return;
       }
+      this.loading = true;
+      this.layerService.addLayer(this.scene, data).subscribe(response => {
+        this.loadLayers(this.sceneId);
+      })
     })
   }
 

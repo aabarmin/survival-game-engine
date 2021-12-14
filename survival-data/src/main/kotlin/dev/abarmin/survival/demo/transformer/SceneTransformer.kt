@@ -14,6 +14,8 @@ class SceneTransformer(val layerTransformer: LayerTransformer) {
             domain.id,
             domain.name,
             domain.layers.map { layerTransformer.toModel(it) },
+            domain.width,
+            domain.height,
             domain.type
         )
     }
@@ -23,6 +25,8 @@ class SceneTransformer(val layerTransformer: LayerTransformer) {
             model.id,
             model.name,
             model.type,
+            model.width,
+            model.height,
             model.layers.map { layerTransformer.toDomain(it) }
         )
     }

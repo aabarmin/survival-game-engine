@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component
  */
 @Component
 class DummyBinaryContentFactory {
-    fun generate(): Array<Array<PixelColor>> {
-        return Array(0) { _ -> Array(0) { _ -> PixelColor.TRANSPARENT} }
+    fun generate(width: Int, height: Int): Array<Array<PixelColor>> {
+        return Array(height) { _ -> Array(width) { _ -> PixelColor.TRANSPARENT} }
     }
 }

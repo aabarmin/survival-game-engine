@@ -18,10 +18,6 @@ class SceneService(
         return repository.findAll()
     }
 
-    fun addLayer(scene: SceneInfo, layer: SceneLayerInfo): SceneInfo {
-        TODO()
-    }
-
     fun findById(sceneId: String): Optional<SceneInfo> {
         return repository.findById(sceneId)
     }

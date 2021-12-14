@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { NewLayerRequest } from './layer-new-request';
 
 @Component({
   selector: 'app-layer-new-dialog',
@@ -7,7 +8,15 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./layer-new-dialog.component.css']
 })
 export class LayerNewDialogComponent implements OnInit {
-  data = {}
+  data: NewLayerRequest = {
+    name: '',
+    type: ''
+  }
+
+  types = {
+    'STATIC': "Static layer",
+    'DYNAMIC': "Dynamic layer"
+  }
 
   constructor(public dialogRef: MatDialogRef<LayerNewDialogComponent>) { }
 

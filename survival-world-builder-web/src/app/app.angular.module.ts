@@ -9,6 +9,8 @@ import { MatCardModule } from '@angular/material/card'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatInputModule } from '@angular/material/input'
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatSelectModule } from '@angular/material/select'
 
 @NgModule({
     imports: [
@@ -19,7 +21,9 @@ import { MatInputModule } from '@angular/material/input'
         MatCardModule,
         MatProgressBarModule,
         MatDialogModule,
-        MatInputModule
+        MatInputModule, 
+        MatFormFieldModule,
+        MatSelectModule
     ], 
     exports: [
         MatToolbarModule,
@@ -30,7 +34,9 @@ import { MatInputModule } from '@angular/material/input'
         MatCardModule,
         MatProgressBarModule,
         MatDialogModule,
-        MatInputModule
+        MatInputModule,
+        MatFormFieldModule,
+        MatSelectModule
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

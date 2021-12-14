@@ -56,7 +56,9 @@ internal class SceneServiceTest {
                 "test-scene",
                 "test scene",
                 listOf(),
-                SceneType.LAYERED
+                480,
+                240,
+                SceneType.LAYERED,
             )
         ))
 

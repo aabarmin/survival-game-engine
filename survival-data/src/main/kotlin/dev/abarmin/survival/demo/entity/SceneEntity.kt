@@ -9,7 +9,9 @@ import dev.abarmin.survival.demo.scene.info.SceneType
  */
 data class SceneEntity(
     val id: String,
-    var name: String,
-    var type: SceneType,
+    val name: String,
+    val type: SceneType,
+    val width: Int,
+    val height: Int,
     val layers: List<SceneLayerEntity>
 )
