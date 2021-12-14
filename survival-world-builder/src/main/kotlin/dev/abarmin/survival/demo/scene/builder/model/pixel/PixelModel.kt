@@ -1,5 +1,7 @@
 package dev.abarmin.survival.demo.scene.builder.model.pixel
 
+import dev.abarmin.survival.demo.scene.builder.controller.content.model.PixelColorModel
+
 /**
  * @author Aleksandr Barmin
  */

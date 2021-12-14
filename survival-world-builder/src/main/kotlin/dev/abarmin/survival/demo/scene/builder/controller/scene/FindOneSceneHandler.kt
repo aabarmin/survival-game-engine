@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.RestController
  * @author Aleksandr Barmin
  */
 @RestController
-class FindOneSceneController(
+class FindOneSceneHandler(
     private val transformer: SceneRestTransformer,
-    private val sceneService: SceneService
-) {
+    private val sceneService: SceneService) {
 
     @GetMapping("/scenes/{id}")
     fun findScene(@PathVariable("id") id: String): SceneModel {

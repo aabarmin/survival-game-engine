@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController
  * @author Aleksandr Barmin
  */
 @RestController
-class FindAllScenesController(private val sceneService: SceneService) {
+class FindAllScenesHandler(private val sceneService: SceneService) {
     /**
      * This endpoint should return all names of registered scenes.
      */
