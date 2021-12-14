@@ -21,4 +21,16 @@ export class BinaryService {
     const url = `/api/content/${content.type}/${content.name}`;
     return this.http.get<PixelColor[][]>(url);
   }
+
+  /**
+   * Save binary color content to backend. 
+   * 
+   * @param content 
+   * @param data 
+   * @returns 
+   */
+  public save(content: BinaryObject, data: PixelColor[][]): Observable<PixelColor[][]> {
+    const url = `/api/content/${content.type}/${content.name}`;
+    return this.http.post<PixelColor[][]>(url, data);
+  }
 }

@@ -17,4 +17,16 @@ class PixelColorTransformer {
             color.transparency
         )
     }
+
+    fun toDomain(cell: PixelColorModel): PixelColor {
+        if (cell.transparency == 100) {
+            return PixelColor.TRANSPARENT
+        }
+        return PixelColor(
+            cell.red,
+            cell.green,
+            cell.blue,
+            cell.transparency
+        )
+    }
 }
