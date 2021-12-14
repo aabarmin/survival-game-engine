@@ -17,6 +17,7 @@ import { SceneNewDialogComponent } from './scene-new-dialog/scene-new-dialog.com
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { SceneViewComponent } from './scene-view/scene-view.component';
 import { SceneViewLayersComponent } from './scene-view-layers/scene-view-layers.component';
+import { LayerNewDialogComponent } from './layer-new-dialog/layer-new-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { SceneViewLayersComponent } from './scene-view-layers/scene-view-layers.
     SceneListComponent,
     SceneNewDialogComponent, 
     SceneViewComponent,
-    SceneViewLayersComponent
+    SceneViewLayersComponent, 
+
+    LayerNewDialogComponent
   ],
   imports: [
     BrowserModule,

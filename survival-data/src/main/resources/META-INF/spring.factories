@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  dev.abarmin.survival.demo.data.SurvivalDataConfiguration
+  dev.abarmin.survival.demo.SurvivalDataConfiguration

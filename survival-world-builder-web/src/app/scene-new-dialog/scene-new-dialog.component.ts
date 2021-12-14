@@ -7,19 +7,14 @@ import { SceneRow } from '../scene-row';
   templateUrl: './scene-new-dialog.component.html',
   styleUrls: ['./scene-new-dialog.component.css']
 })
-export class SceneNewDialogComponent implements OnInit {
+export class SceneNewDialogComponent {
 
   data: SceneRow = {
     id: "",
     name: ""
   }
 
-  constructor(
-    public dialogRef: MatDialogRef<SceneNewDialogComponent>
-  ) { }
-
-  ngOnInit(): void {
-  }
+  constructor(public dialogRef: MatDialogRef<SceneNewDialogComponent>) { }
 
   cancel(): void {
     this.dialogRef.close();

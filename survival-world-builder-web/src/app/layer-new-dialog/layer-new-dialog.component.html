@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Create a layer</h1>
+<div mat-dialog-content>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Layer name</mat-label>
+            <input matInput [(ngModel)]="data.name">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Layer type</mat-label>
+            <mat-select [(ngModel)]="data.type">
+                <mat-option *ngFor="let type of types | keyvalue" 
+                    value="{{type.key}}">{{type.value}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>
