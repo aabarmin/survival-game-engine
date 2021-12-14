@@ -1,7 +1,7 @@
-package dev.abarmin.survival.demo.scene.builder.transformer
+package dev.abarmin.survival.demo.scene.builder.controller.content.transformer
 
 import dev.abarmin.survival.demo.scene.PixelColor
-import dev.abarmin.survival.demo.scene.builder.model.pixel.PixelColorModel
+import dev.abarmin.survival.demo.scene.builder.controller.content.model.PixelColorModel
 import org.springframework.stereotype.Component
 
 /**

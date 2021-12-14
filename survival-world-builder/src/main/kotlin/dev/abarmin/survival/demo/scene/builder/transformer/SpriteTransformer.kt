@@ -1,5 +1,6 @@
 package dev.abarmin.survival.demo.scene.builder.transformer
 
+import dev.abarmin.survival.demo.scene.builder.controller.content.transformer.PixelDataTransformer
 import dev.abarmin.survival.demo.scene.builder.model.sprite.SpriteModel
 import dev.abarmin.survival.demo.sprite.DefaultSprite
 import dev.abarmin.survival.demo.sprite.Sprite
@@ -17,9 +18,10 @@ class SpriteTransformer(val dataTransformer: PixelDataTransformer) {
     }
 
     private fun toModel(sprite: DefaultSprite): SpriteModel {
-        return SpriteModel(
-            "unknown",
-            dataTransformer.toModel(sprite.data)
-        )
+        TODO()
+//        return SpriteModel(
+//            "unknown",
+//            dataTransformer.toModel(sprite.data)
+//        )
     }
 }

@@ -4,6 +4,7 @@ import dev.abarmin.survival.demo.config.StorageConfiguration
 import dev.abarmin.survival.demo.json.JsonReader
 import dev.abarmin.survival.demo.json.JsonWriter
 import dev.abarmin.survival.demo.entity.SceneEntity
+import dev.abarmin.survival.demo.json.read
 import dev.abarmin.survival.demo.transformer.SceneTransformer
 import dev.abarmin.survival.demo.scene.info.ContentType
 import dev.abarmin.survival.demo.scene.info.SceneInfo
@@ -29,7 +30,7 @@ class SceneJsonRepository(
         if (!Files.exists(filePath)) {
             return Optional.empty()
         }
-        return Optional.of(jsonReader.read(filePath, SceneEntity::class))
+        return Optional.of(jsonReader.read<SceneEntity>(filePath))
             .map { transformer.toModel(it) }
     }
 
@@ -47,7 +48,7 @@ class SceneJsonRepository(
         val scenesFolderPath = configuration.getStorage(ContentType.SCENE)
         return Files.list(scenesFolderPath)
             .filter { path -> path.fileName.name.endsWith(".json") }
-            .map { path -> jsonReader.read(path, SceneEntity::class) }
+            .map { path -> jsonReader.read<SceneEntity>(path) }
             .map { entity -> transformer.toModel(entity) }
             .toList()
     }

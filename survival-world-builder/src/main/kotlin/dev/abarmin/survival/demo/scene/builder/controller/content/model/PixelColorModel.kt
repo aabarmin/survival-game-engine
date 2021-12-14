@@ -1,4 +1,4 @@
-package dev.abarmin.survival.demo.scene.builder.model.pixel
+package dev.abarmin.survival.demo.scene.builder.controller.content.model
 
 /**
  * @author Aleksandr Barmin
