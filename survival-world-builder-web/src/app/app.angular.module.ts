@@ -11,6 +11,7 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from '@angular/material/select'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import { MatSelectModule } from '@angular/material/select'
         MatDialogModule,
         MatInputModule, 
         MatFormFieldModule,
-        MatSelectModule
+        MatSelectModule,
+        MatProgressSpinnerModule
     ], 
     exports: [
         MatToolbarModule,
@@ -36,7 +38,8 @@ import { MatSelectModule } from '@angular/material/select'
         MatDialogModule,
         MatInputModule,
         MatFormFieldModule,
-        MatSelectModule
+        MatSelectModule,
+        MatProgressSpinnerModule
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

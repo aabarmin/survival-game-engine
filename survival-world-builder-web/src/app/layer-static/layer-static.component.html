@@ -1,3 +1,8 @@
+<mat-toolbar>
+    <mat-spinner *ngIf="saving" [diameter]="50"></mat-spinner>
+</mat-toolbar>
+
 <app-progressor [enabled]="loading"></app-progressor>
 
-<app-canvas [data]="colorData"></app-canvas>
+<app-canvas #staticLayerCanvas
+            [data]="colorData"></app-canvas>

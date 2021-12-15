@@ -13,7 +13,15 @@ class PixelDataTransformer(private val colorTransformer: PixelColorTransformer) 
         return data.map { row -> convertRow(row) }.toTypedArray()
     }
 
+    fun toDomain(data: Array<Array<PixelColorModel>>): Array<Array<PixelColor>> {
+        return data.map { row -> convertRow(row) }.toTypedArray()
+    }
+
     private fun convertRow(row: Array<PixelColor>): Array<PixelColorModel> {
         return row.map { cell -> colorTransformer.toModel(cell) }.toTypedArray()
+    }
+
+    private fun convertRow(row: Array<PixelColorModel>): Array<PixelColor> {
+        return row.map { cell -> colorTransformer.toDomain(cell) }.toTypedArray()
     }
 }
