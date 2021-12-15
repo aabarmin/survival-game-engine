@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { PixelColor } from '../pixel-color';
+import { colorCopy, PixelColor } from '../pixel-color';
 
 @Component({
   selector: 'app-canvas',
@@ -16,18 +16,30 @@ export class CanvasComponent implements OnChanges {
   private PIXEL_SIZE: number = 8;
   @ViewChild("contentCanvas")
   private contentCavasRef!: ElementRef<HTMLCanvasElement>
+  private renderingContext!: CanvasRenderingContext2D
 
   private isDrawing: boolean = false;
   private currentColor: PixelColor = {
     red: 0,
     green: 0,
-    blue: 0, 
+    blue: 0,
     transparency: 0
-  }
+  };
   private currentContent: PixelColor[][] = [];
   private drawGrid: boolean = false;
 
   constructor() { }
+
+  private get context(): CanvasRenderingContext2D {
+    if (this.renderingContext == null) {
+      this.renderingContext = this.canvas.getContext('2d')!
+    }
+    return this.renderingContext;
+  }
+
+  private get canvas(): HTMLCanvasElement {
+    return this.contentCavasRef.nativeElement;
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.data && this.contentCavasRef) {
@@ -55,35 +67,40 @@ export class CanvasComponent implements OnChanges {
     this.drawContent();
   }
 
+  /**
+   * Draw a single pixel. 
+   * 
+   * @param row 
+   * @param cell 
+   * @returns 
+   */
+  private drawSingle(row: number, cell: number): void {
+    // checking if nothing is changed
+    if (!this.shouldDraw(row, cell)) {
+      return;
+    }
+    
+    // getting the actual color
+    const color = this.data[row][cell];
+
+    // calculating actual position of the pixel
+    const x = cell * this.PIXEL_SIZE;
+    const y = row * this.PIXEL_SIZE;
+
+    // drawing and adding to the cache
+    this.currentContent[row][cell] = colorCopy(color);
+    this.context.fillStyle = `rgb(${color.red}, ${color.green}, ${color.blue})`
+    this.context.fillRect(x, y, this.PIXEL_SIZE, this.PIXEL_SIZE)
+  }
+
+  /**
+   * Draw the whole content.
+   */
   private drawContent(): void {
-    const canvas = this.contentCavasRef.nativeElement;
-    const context = canvas.getContext('2d');
-
-    context!.strokeStyle = 'black'
-
     for (let rowNum = 0; rowNum < this.data.length; rowNum++) {
       const row = this.data[rowNum];
       for (let cellNum = 0; cellNum < row.length; cellNum++) {
-        const color = row[cellNum];
-
-        const x = cellNum * this.PIXEL_SIZE;
-        const y = rowNum * this.PIXEL_SIZE;
-
-        if (this.drawGrid) {
-          context!.strokeRect(x, y, this.PIXEL_SIZE, this.PIXEL_SIZE)
-        }
-
-        if (this.shouldDraw(rowNum, cellNum)) {
-          this.currentContent[rowNum][cellNum] = {
-            red: color.red,
-            green: color.green,
-            blue: color.blue,
-            transparency: color.transparency
-          };
-
-          context!.fillStyle = `rgb(${color.red}, ${color.green}, ${color.blue})`
-          context!.fillRect(x, y, this.PIXEL_SIZE, this.PIXEL_SIZE)
-        }
+        this.drawSingle(rowNum, cellNum);
       }
     }
   }
@@ -96,12 +113,7 @@ export class CanvasComponent implements OnChanges {
         this.currentContent[rowNum] = [];
         for (let cellNum = 0; cellNum < row.length; cellNum++) {
           const color = row[cellNum]
-          this.currentContent[rowNum][cellNum] = {
-            red: color.red,
-            green: color.green,
-            blue: color.blue,
-            transparency: color.transparency
-          };
+          this.currentContent[rowNum][cellNum] = colorCopy(color);
         }
       }
     }
@@ -122,7 +134,7 @@ export class CanvasComponent implements OnChanges {
   private paint(coordinate: Coordinate): void {
     this.data[coordinate.row][coordinate.col] = this.currentColor;
     this.onDataChange.emit(this.data);
-    this.draw();
+    this.drawSingle(coordinate.row, coordinate.col);
   }
 
   private extractToCoordinate(event: MouseEvent): Coordinate {
