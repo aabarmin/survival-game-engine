@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { ActivatedRoute } from '@angular/router';
-import { ColorFormat } from '@ng-matero/extensions/colorpicker';
+import { ColorFormat, MtxColorpicker } from '@ng-matero/extensions/colorpicker';
 import { throttleTime } from 'rxjs/operators';
 import { BinaryService } from '../binary.service';
 import { CanvasHandler } from '../canvas/canvas-handler';
@@ -30,7 +30,7 @@ export class LayerStaticComponent implements OnInit, AfterViewInit {
   colorData: PixelColor[][] = [];
 
   colorPickerFormat: ColorFormat = "rgb";
-  colorPickerSelected = '';
+  colorPickerSelected = 'rgb(0, 0, 0)';
 
   @ViewChild("staticLayerCanvas")
   layerContentCanvas!: CanvasComponent
@@ -80,7 +80,10 @@ export class LayerStaticComponent implements OnInit, AfterViewInit {
     /**
      * Changing the current drawing tool.
      */
-    alert(1);
     this.layerContentCanvas.canvasHandler = this.availableTools[this.selectedToolName];
+  }
+
+  onColorChange() {
+    debugger;
   }
 }

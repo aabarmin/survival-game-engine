@@ -11,9 +11,12 @@
     <!-- Color selector -->
     <mat-form-field>
         <mat-label>Drawing color</mat-label>
-        <input matInput [(ngModel)]="colorPickerSelected" [mtxColorpicker]="picker" [format]="colorPickerFormat">
-        <mtx-colorpicker-toggle matSuffix [for]="picker"></mtx-colorpicker-toggle>
-        <mtx-colorpicker #picker></mtx-colorpicker>
+        <input matInput 
+            [(ngModel)]="colorPickerSelected" 
+            [mtxColorpicker]="colorPickerComponent" 
+            [format]="colorPickerFormat">
+        <mtx-colorpicker-toggle matSuffix [for]="colorPickerComponent"></mtx-colorpicker-toggle>
+        <mtx-colorpicker #colorPickerComponent></mtx-colorpicker>
     </mat-form-field>
 
     <mat-spinner *ngIf="saving" [diameter]="50"></mat-spinner>

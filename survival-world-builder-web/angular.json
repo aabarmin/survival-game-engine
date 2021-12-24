@@ -34,6 +34,10 @@
             "scripts": []
           },
           "configurations": {
+            "development": {
+              "sourceMap": true,
+              "optimization": false
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -72,8 +76,12 @@
           "configurations": {
             "production": {
               "browserTarget": "survival-scene-builder-web:build:production"
+            },
+            "development": {
+              "browserTarget": "survival-scene-builder-web:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
