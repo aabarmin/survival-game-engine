@@ -9,6 +9,12 @@
     </mat-button-toggle-group>
 
     <!-- Color selector -->
+    <mat-form-field>
+        <mat-label>Drawing color</mat-label>
+        <input matInput [(ngModel)]="colorPickerSelected" [mtxColorpicker]="picker" [format]="colorPickerFormat">
+        <mtx-colorpicker-toggle matSuffix [for]="picker"></mtx-colorpicker-toggle>
+        <mtx-colorpicker #picker></mtx-colorpicker>
+    </mat-form-field>
 
     <mat-spinner *ngIf="saving" [diameter]="50"></mat-spinner>
 </mat-toolbar>

@@ -13,6 +13,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from '@angular/material/select'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
+import { MtxColorpickerModule } from '@ng-matero/extensions/colorpicker';
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle'
         MatFormFieldModule,
         MatSelectModule,
         MatProgressSpinnerModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+        MtxColorpickerModule
     ], 
     exports: [
         MatToolbarModule,
@@ -42,7 +44,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle'
         MatFormFieldModule,
         MatSelectModule,
         MatProgressSpinnerModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+        MtxColorpickerModule
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA
