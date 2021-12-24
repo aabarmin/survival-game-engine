@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from '@angular/material/select'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonToggleModule } from '@angular/material/button-toggle'
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         MatInputModule, 
         MatFormFieldModule,
         MatSelectModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatButtonToggleModule
     ], 
     exports: [
         MatToolbarModule,
@@ -39,7 +41,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         MatInputModule,
         MatFormFieldModule,
         MatSelectModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatButtonToggleModule
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

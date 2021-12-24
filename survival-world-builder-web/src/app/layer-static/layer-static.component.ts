@@ -1,7 +1,10 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { ActivatedRoute } from '@angular/router';
 import { throttleTime } from 'rxjs/operators';
 import { BinaryService } from '../binary.service';
+import { CanvasHandler } from '../canvas/canvas-handler';
+import { CanvasHandlerDraw } from '../canvas/canvas-handler-draw';
 import { CanvasComponent } from '../canvas/canvas.component';
 import { PixelColor } from '../pixel-color';
 
@@ -14,6 +17,12 @@ export class LayerStaticComponent implements OnInit, AfterViewInit {
 
   private sceneId!: string;
   private layerId!: string;
+
+  selectedToolName: string = "draw";
+  availableTools: {[key: string]: CanvasHandler} = {
+    "draw": new CanvasHandlerDraw(),
+    "erase": new CanvasHandler()
+  };
   
   loading = true;
   saving = false;
@@ -27,6 +36,9 @@ export class LayerStaticComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute) { }
 
   ngAfterViewInit(): void {
+    /**
+     * Subscribing to the onDataChange event to save data when changed.
+     */
     this.layerContentCanvas.onDataChange.pipe(
       throttleTime(1000)
     ).subscribe(data => {
@@ -35,6 +47,10 @@ export class LayerStaticComponent implements OnInit, AfterViewInit {
         this.saving = false;
       })
     })
+    /**
+     * Setting a defaultl tool. 
+     */
+    this.layerContentCanvas.canvasHandler = this.availableTools["draw"];
   }
 
   ngOnInit(): void {
@@ -54,5 +70,12 @@ export class LayerStaticComponent implements OnInit, AfterViewInit {
       this.colorData = data; 
       this.loading = false;
     })
+  }
+
+  onToolChange(event: MatButtonToggleChange) {
+    /**
+     * Changing the current drawing tool.
+     */
+    this.layerContentCanvas.canvasHandler = this.availableTools[this.selectedToolName];
   }
 }
