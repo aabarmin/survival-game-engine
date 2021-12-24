@@ -1,5 +1,9 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { colorCopy, PixelColor } from '../pixel-color';
+import { Coordinate } from './canvas-coordinate'
+import { CanvasHandler } from './canvas-handler';
+import { CanvasHandlerDraw } from './canvas-handler-draw';
+import { CanvasHandlingContext } from './canvas-handling-context';
 
 @Component({
   selector: 'app-canvas',
@@ -9,6 +13,9 @@ import { colorCopy, PixelColor } from '../pixel-color';
 export class CanvasComponent implements OnChanges {
   @Input()
   data: PixelColor[][] = [];
+
+  @Input()
+  canvasHandler: CanvasHandler = new CanvasHandlerDraw();
 
   @Output()
   onDataChange = new EventEmitter<PixelColor[][]>();
@@ -49,7 +56,7 @@ export class CanvasComponent implements OnChanges {
 
   public onMouseDown(event: MouseEvent): void {
     this.isDrawing = true;
-    this.paint(this.extractToCoordinate(event));
+    this.handleChange(this.extractToCoordinate(event));
   }
 
   public onMouseUp(event: MouseEvent): void {
@@ -58,7 +65,7 @@ export class CanvasComponent implements OnChanges {
 
   public onMouseMove(event: MouseEvent): void {
     if (this.isDrawing) {
-      this.paint(this.extractToCoordinate(event));
+      this.handleChange(this.extractToCoordinate(event));
     }
   }
 
@@ -131,8 +138,16 @@ export class CanvasComponent implements OnChanges {
     }
   }
 
-  private paint(coordinate: Coordinate): void {
-    this.data[coordinate.row][coordinate.col] = this.currentColor;
+  private handleChange(coordinate: Coordinate): void {
+    /**
+     * 1. Take the current drawing tool, handle the change
+     * 2. Emit change into the external world
+     * 3. Update the UI
+     */
+    this.canvasHandler.handle(new CanvasHandlingContext(
+      this.data, 
+      coordinate
+    ))
     this.onDataChange.emit(this.data);
     this.drawSingle(coordinate.row, coordinate.col);
   }
@@ -147,9 +162,4 @@ export class CanvasComponent implements OnChanges {
   private offsetToCoordinate(offset: number): number {
     return Math.floor(offset / this.PIXEL_SIZE);
   }
-}
-
-type Coordinate = {
-  row: number
-  col: number
 }
